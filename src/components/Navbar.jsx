@@ -18,9 +18,6 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center gap-3">
               <img className="h-14 w-auto" src="/cusoc.png" alt="CUSoC Logo" />
-              <span className="hidden lg:block text-gray-800 font-bold text-lg tracking-tight">
-                Chandigarh University Summer of Code
-              </span>
             </Link>
           </div>
 
