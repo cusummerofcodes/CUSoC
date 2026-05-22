@@ -4,11 +4,11 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary');
 const CloudinaryStorage = require('multer-storage-cloudinary'); // v2.2.1 exports the class directly
 
 // Configure Cloudinary
-cloudinary.config({
+cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
