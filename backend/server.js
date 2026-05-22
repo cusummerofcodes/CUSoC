@@ -47,3 +47,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = app;
 
+// Disable Vercel's default body parser to allow Multer to process multipart/form-data
+module.exports.config = {
+  api: {
+    bodyParser: false,
+  },
+};
