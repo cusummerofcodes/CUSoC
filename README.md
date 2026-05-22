@@ -114,60 +114,61 @@ CUSoC/
 │   ├── favicon.svg
 │   └── icons.svg
 │
-├── src/                        # Frontend source
+├── src/                        # Frontend source code
 │   ├── components/
 │   │   ├── Navbar.jsx          # Global navigation bar
 │   │   └── Footer.jsx          # Global footer
 │   │
 │   ├── pages/
-│   │   ├── LandingPage.jsx             # Home / hero page
-│   │   ├── ContributorForm.jsx         # Contributor application
-│   │   ├── MentorPortal.jsx            # Mentor type selection portal
-│   │   ├── IndustryMentorForm.jsx      # Industry mentor form
-│   │   ├── FacultyMentorForm.jsx       # Faculty mentor form
-│   │   ├── StudentMentorForm.jsx       # Student mentor form
-│   │   ├── ProjectPortal.jsx           # Project type selection portal
-│   │   ├── InstitutionalProjectForm.jsx # Institutional project proposal
-│   │   ├── IndustryProjectForm.jsx     # Industry project proposal
-│   │   ├── MentorForm.jsx              # Shared mentor form (base)
-│   │   ├── ProjectForm.jsx             # Shared project form (base)
-│   │   ├── AdminLogin.jsx              # Admin login page
-│   │   └── AdminDashboard.jsx          # Admin dashboard
+│   │   ├── LandingPage.jsx              # Home / hero page
+│   │   ├── ContributorForm.jsx          # Contributor application
+│   │   ├── MentorPortal.jsx             # Mentor type selection
+│   │   ├── IndustryMentorForm.jsx       # Industry mentor form
+│   │   ├── FacultyMentorForm.jsx        # Faculty mentor form
+│   │   ├── StudentMentorForm.jsx        # Student mentor form
+│   │   ├── ProjectPortal.jsx            # Project type selection
+│   │   ├── InstitutionalProjectForm.jsx # Institutional project form
+│   │   ├── IndustryProjectForm.jsx      # Industry project form
+│   │   ├── AdminLogin.jsx               # Admin login page
+│   │   └── AdminDashboard.jsx           # Admin dashboard
 │   │
 │   ├── assets/                 # Image/icon assets
+│   ├── api.js                  # Centralized Axios API client
 │   ├── App.jsx                 # Root component with routing
 │   ├── App.css                 # Global component styles
 │   ├── main.jsx                # React entry point
 │   └── index.css               # Base / reset CSS
 │
-├── backend/                    # Backend source
+├── backend/                        # Node.js + Express Backend
 │   ├── config/
-│   │   └── db.js               # MongoDB connection
+│   │   └── db.js                   # MongoDB connection
 │   │
 │   ├── controllers/
-│   │   ├── applyController.js  # Handles form submissions + OTP logic
-│   │   └── adminController.js  # Admin auth + submission management
+│   │   ├── applyController.js      # Form submissions + OTP logic
+│   │   └── adminController.js      # Admin auth + management
 │   │
 │   ├── models/
-│   │   ├── Contributor.js      # Contributor schema
-│   │   ├── Mentor.js           # Mentor schema
-│   │   ├── ProjectProposal.js  # Project proposal schema
-│   │   └── Admin.js            # Admin user schema
+│   │   ├── Contributor.js          # Contributor schema
+│   │   ├── Mentor.js               # Mentor schema
+│   │   ├── ProjectProposal.js      # Project proposal schema
+│   │   └── Admin.js                # Admin user schema
 │   │
 │   ├── routes/
-│   │   ├── applyRoutes.js      # /api/apply/* endpoints
-│   │   └── adminRoutes.js      # /api/admin/* endpoints
+│   │   ├── applyRoutes.js          # /api/apply/* endpoints
+│   │   └── adminRoutes.js          # /api/admin/* endpoints
 │   │
 │   ├── utils/
-│   │   └── sendEmail.js        # Nodemailer email utility
+│   │   └── sendEmail.js            # Nodemailer email utility
 │   │
-│   ├── server.js               # Express app entry point
+│   ├── server.js                   # Express app entry point
+│   ├── vercel.json                 # Backend Vercel config
 │   ├── package.json
-│   └── .env                    # Backend environment variables (gitignored)
+│   └── .env                        # Environment variables (gitignored)
 │
 ├── index.html                  # Vite HTML entry
 ├── vite.config.js              # Vite configuration
 ├── eslint.config.js            # ESLint configuration
+├── vercel.json                 # Frontend Vercel config
 ├── package.json                # Frontend dependencies
 ├── cusoc_prd.md                # Product Requirements Document
 └── README.md
@@ -328,4 +329,3 @@ For questions or collaboration, contact the organizing team.
 
 ---
 
-<p align="center">Made with ❤️ by the CUSoC Team — Chandigarh University</p>
