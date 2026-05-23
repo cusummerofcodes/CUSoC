@@ -43,21 +43,21 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-[#000511]">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
         <div className="relative flex items-center justify-center">
           {/* Glowing pulse rings */}
-          <div className="absolute w-32 h-32 border-4 border-[#0F62FE] rounded-full animate-ping opacity-20"></div>
-          <div className="absolute w-40 h-40 border-2 border-[#0F62FE] rounded-full animate-ping opacity-10" style={{ animationDelay: '0.2s' }}></div>
+          <div className="absolute w-32 h-32 border-4 border-red-600 rounded-full animate-ping opacity-20"></div>
+          <div className="absolute w-40 h-40 border-2 border-red-600 rounded-full animate-ping opacity-10" style={{ animationDelay: '0.2s' }}></div>
           
           {/* Spinning gradient ring */}
-          <div className="absolute w-24 h-24 rounded-full border-t-4 border-r-4 border-l-4 border-transparent border-t-[#0F62FE] border-r-[#0F62FE] animate-spin"></div>
+          <div className="absolute w-24 h-24 rounded-full border-t-4 border-r-4 border-l-4 border-transparent border-t-red-600 border-r-red-600 animate-spin"></div>
           
           {/* Center logo/dot */}
-          <div className="w-16 h-16 bg-[#000511] rounded-full z-10 flex items-center justify-center shadow-[0_0_20px_#0F62FE]">
+          <div className="w-16 h-16 bg-white rounded-full z-10 flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.4)]">
             <img src="/cusoc.png" alt="CUSoC Logo" className="w-10 h-auto" />
           </div>
         </div>
-        <h2 className="mt-8 text-xl font-semibold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#0F62FE] animate-pulse">
+        <h2 className="mt-8 text-xl font-semibold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600 animate-pulse">
           INITIALIZING
         </h2>
       </div>
