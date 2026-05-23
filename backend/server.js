@@ -38,6 +38,15 @@ if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
+// Global Error Handler
+app.use((err, req, res, next) => {
+  console.error("Global Error Caught:", err);
+  res.status(500).json({
+    message: "Global Error",
+    error: err.message || err
+  });
+});
+
 module.exports = app;
 
 // Disable Vercel's default body parser to allow Multer to process multipart/form-data

@@ -5,6 +5,7 @@ const Contributor = require('../models/Contributor');
 const Mentor = require('../models/Mentor');
 const ProjectProposal = require('../models/ProjectProposal');
 const sendEmail = require('../utils/sendEmail');
+const emailTemplate = require('../utils/emailTemplate');
 
 // @desc    Admin login
 // @route   POST /api/admin/login
@@ -64,19 +65,36 @@ const updateStatus = async (req, res) => {
     // Send Status Update Email
     const emailTo = result.email || (result.proposerEmail ? result.proposerEmail : null); // Adjust if model uses different email key
     if (emailTo && (status === 'Approved' || status === 'Rejected')) {
-      const emailHtml = `
-        <div style="font-family: sans-serif; color: #333;">
-          <h2>Application Update</h2>
-          <p>Hi ${result.fullName || result.proposerName || 'Applicant'},</p>
-          <p>Your ${type} application status has been updated to: <strong style="color: ${status === 'Approved' ? 'green' : 'red'}">${status}</strong>.</p>
-          ${status === 'Approved' 
-            ? '<p>Congratulations! You are now part of the CUSoC program. We will be in touch with next steps soon.</p>' 
-            : '<p>Unfortunately, we cannot proceed with your application at this time. Thank you for your interest.</p>'}
-          <br/>
-          <p>Best regards,<br/><strong>CUSoC Team</strong></p>
+      const isApproved = status === 'Approved';
+      const applicantName = result.fullName || result.proposerName || 'Applicant';
+      const statusColor = isApproved ? '#2ecc71' : '#E63946';
+      const statusIcon = isApproved ? '🎉' : '📋';
+
+      const emailHtml = emailTemplate(`
+        <h2 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">Application ${status} ${statusIcon}</h2>
+        <p style="margin:0 0 24px;font-size:14px;color:#868e96;border-bottom:1px solid #e9ecef;padding-bottom:20px;">CUSoC 2025 &mdash; Status Update</p>
+
+        <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Hi <strong>${applicantName}</strong>,</p>
+        <p style="margin:0 0 24px;font-size:15px;color:#343a40;line-height:1.7;">We have reviewed your <strong style="color:#1a1a2e;">${type}</strong> application for CUSoC and we have an update for you.</p>
+
+        <!-- Status banner -->
+        <div style="background:${isApproved ? 'linear-gradient(135deg,#1a1a2e,#0f3460)' : '#f8f9fa'};border-radius:12px;padding:24px;text-align:center;margin:0 0 24px;border:${isApproved ? 'none' : '1px solid #e9ecef'};">
+          <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:${isApproved ? 'rgba(255,255,255,0.6)' : '#868e96'};letter-spacing:1px;text-transform:uppercase;">Application Status</p>
+          <div style="display:inline-block;background:${statusColor};color:#fff;font-size:16px;font-weight:800;padding:8px 28px;border-radius:50px;letter-spacing:0.5px;">${status}</div>
         </div>
-      `;
-      await sendEmail({ email: emailTo, subject: `CUSoC Application ${status}`, html: emailHtml });
+
+        ${isApproved
+          ? `<div style="background:#f0fdf4;border-left:4px solid #2ecc71;border-radius:0 8px 8px 0;padding:16px 20px;margin:0 0 24px;">
+              <p style="margin:0;font-size:15px;color:#166534;line-height:1.7;">🎊 <strong>Congratulations!</strong> You are officially part of the CUSoC program. Our team will be in touch very soon with the next steps. Get ready for an exciting journey!</p>
+            </div>`
+          : `<div style="background:#fff5f5;border-left:4px solid #E63946;border-radius:0 8px 8px 0;padding:16px 20px;margin:0 0 24px;">
+              <p style="margin:0;font-size:15px;color:#7f1d1d;line-height:1.7;">Thank you for your time and effort in applying. Unfortunately, we are unable to proceed with your application at this time. We encourage you to keep building and apply again in the future!</p>
+            </div>`
+        }
+
+        <p style="margin:0;font-size:14px;color:#495057;line-height:1.7;">Best regards,<br/><strong style="color:#1a1a2e;">The CUSoC Team</strong></p>
+      `);
+      await sendEmail({ email: emailTo, subject: `CUSoC — Your Application has been ${status}`, html: emailHtml });
     }
 
     res.json({ message: 'Status updated', data: result });

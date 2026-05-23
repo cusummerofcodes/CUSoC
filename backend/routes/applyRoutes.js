@@ -18,15 +18,14 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'cusoc_resumes',
-    resource_type: 'auto', // 'auto' lets Cloudinary detect PDF/raw files correctly (v2 requirement)
-    format: async (req, file) => 'pdf',
-    transformation: [{ quality: 'auto:eco' }]
+    resource_type: 'auto',
+    allowed_formats: ['pdf', 'doc', 'docx'],
   },
 });
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5000000 }, // 5MB limit before compression
+  limits: { fileSize: 5000000 },
   fileFilter: function (req, file, cb) {
     const filetypes = /pdf/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -34,7 +33,7 @@ const upload = multer({
     if (mimetype && extname) {
       return cb(null, true);
     } else {
-      cb('Error: PDFs Only!');
+      cb(new Error('Error: PDFs Only!'));
     }
   }
 });

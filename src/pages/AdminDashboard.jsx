@@ -42,6 +42,30 @@ const AdminDashboard = () => {
     }
   };
 
+  const downloadResume = async (url, name) => {
+    try {
+      // Ensure it is HTTPS
+      const secureUrl = url.replace('http://', 'https://');
+      const response = await fetch(secureUrl);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = blobUrl;
+      const safeName = (name || 'resume').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+      a.download = `${safeName}_resume.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(blobUrl);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Download failed:", error);
+      alert("Failed to securely download resume. It will open in a new tab instead.");
+      window.open(url, "_blank");
+    }
+  };
+
   const exportToCSV = () => {
     const activeData = data[activeTab];
     if (!activeData.length) return alert('No data to export');
@@ -104,7 +128,7 @@ const AdminDashboard = () => {
               <td className="px-6 py-4 whitespace-nowrap text-sm font-bold space-x-3 text-right">
                 <button onClick={() => updateStatus(type, item._id, 'Approved')} className="text-green-600 hover:text-green-800 transition-colors">Approve</button>
                 <button onClick={() => updateStatus(type, item._id, 'Rejected')} className="text-red-600 hover:text-red-800 transition-colors">Reject</button>
-                {item.resumeUrl && <a href={item.resumeUrl} target="_blank" rel="noreferrer" className="text-cusoc-red hover:text-red-800 transition-colors">Resume</a>}
+                {item.resumeUrl && <button onClick={() => downloadResume(item.resumeUrl, item.fullName || item.proposerName)} className="text-cusoc-red hover:text-red-800 transition-colors">Resume</button>}
               </td>
             </tr>
           ))}

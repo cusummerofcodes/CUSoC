@@ -2,6 +2,7 @@ const Contributor = require('../models/Contributor');
 const Mentor = require('../models/Mentor');
 const ProjectProposal = require('../models/ProjectProposal');
 const sendEmail = require('../utils/sendEmail');
+const emailTemplate = require('../utils/emailTemplate');
 
 // In-memory store for OTPs
 const otpStore = new Map();
@@ -19,16 +20,22 @@ const sendOtp = async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     otpStore.set(email, { otp, expiresAt: Date.now() + 10 * 60 * 1000 }); // 10 minutes
 
-    const emailHtml = `
-      <div style="font-family: sans-serif; color: #333;">
-        <h2>Email Verification</h2>
-        <p>Your OTP for CUSoC Faculty Mentor Registration is: <strong style="font-size: 24px;">${otp}</strong></p>
-        <p>This OTP is valid for 10 minutes.</p>
-        <br/>
-        <p>Best regards,<br/><strong>CUSoC Team</strong></p>
+    const emailHtml = emailTemplate(`
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">Email Verification 🔐</h2>
+      <p style="margin:0 0 24px;font-size:14px;color:#868e96;border-bottom:1px solid #e9ecef;padding-bottom:20px;">Faculty Mentor Registration</p>
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">We received a request to verify your email address for the CUSoC Faculty Mentor Registration. Use the OTP below to complete your verification.</p>
+
+      <!-- OTP Box -->
+      <div style="background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:12px;padding:28px;text-align:center;margin:24px 0;">
+        <p style="margin:0 0 8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;">Your One-Time Password</p>
+        <div style="font-size:42px;font-weight:900;color:#ffffff;letter-spacing:10px;line-height:1;">${otp}</div>
+        <p style="margin:12px 0 0;font-size:12px;color:rgba(255,255,255,0.5);">Valid for <strong style="color:#E63946;">10 minutes</strong> only</p>
       </div>
-    `;
-    await sendEmail({ email, subject: 'CUSoC - Verification OTP', html: emailHtml });
+
+      <p style="margin:0;font-size:13px;color:#868e96;line-height:1.6;">If you did not request this OTP, you can safely ignore this email.</p>
+    `);
+    await sendEmail({ email, subject: 'CUSoC — Email Verification OTP', html: emailHtml });
 
     res.status(200).json({ message: 'OTP sent successfully' });
   } catch (error) {
@@ -75,7 +82,7 @@ const submitContributor = async (req, res) => {
       preferredRole, collabMode, participatedIn
     } = req.body;
 
-    const resumeUrl = req.file ? req.file.path : null;
+    const resumeUrl = req.file ? (req.file.path || req.file.secure_url || req.file.url) : null;
 
     if (!resumeUrl) {
       return res.status(400).json({ message: 'Resume is required' });
@@ -103,17 +110,24 @@ const submitContributor = async (req, res) => {
 
     await newContributor.save();
 
-    const emailHtml = `
-      <div style="font-family: sans-serif; color: #333;">
-        <h2>Application Received!</h2>
-        <p>Hi ${fullName},</p>
-        <p>Thank you for applying to be a Contributor for the Chandigarh University Summer of Code (CUSoC) pilot program.</p>
-        <p>We have successfully received your application. Our team will review your details and get back to you soon regarding the next steps.</p>
-        <br/>
-        <p>Best regards,<br/><strong>CUSoC Team</strong></p>
+    const emailHtml = emailTemplate(`
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">Application Received! 🎉</h2>
+      <p style="margin:0 0 24px;font-size:14px;color:#868e96;border-bottom:1px solid #e9ecef;padding-bottom:20px;">Contributor Application — CUSoC 2025</p>
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Hi <strong>${fullName}</strong>,</p>
+      <p style="margin:0 0 24px;font-size:15px;color:#343a40;line-height:1.7;">Thank you for applying to be a <strong style="color:#E63946;">Contributor</strong> for the Chandigarh University Summer of Code (CUSoC) pilot program. We're excited to have you on board!</p>
+
+      <!-- Status badge -->
+      <div style="background:#f8f9fa;border-left:4px solid #E63946;border-radius:0 8px 8px 0;padding:16px 20px;margin:0 0 24px;">
+        <p style="margin:0;font-size:13px;font-weight:700;color:#1a1a2e;text-transform:uppercase;letter-spacing:0.5px;">Application Status</p>
+        <p style="margin:4px 0 0;font-size:15px;font-weight:600;color:#E63946;">✅ Received &amp; Under Review</p>
       </div>
-    `;
-    await sendEmail({ email, subject: 'CUSoC Contributor Application Received', html: emailHtml });
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Our team will carefully review your details and get back to you soon with the next steps. Keep an eye on your inbox!</p>
+
+      <p style="margin:0;font-size:14px;color:#495057;line-height:1.7;">Best of luck,<br/><strong style="color:#1a1a2e;">The CUSoC Team</strong></p>
+    `);
+    await sendEmail({ email, subject: 'CUSoC — Contributor Application Received ✅', html: emailHtml });
 
     res.status(201).json({ message: 'Contributor application submitted successfully' });
   } catch (error) {
@@ -141,7 +155,7 @@ const submitMentor = async (req, res) => {
       mentorshipStyle
     } = req.body;
 
-    const resumeUrl = req.file ? req.file.path : null;
+    const resumeUrl = req.file ? (req.file.path || req.file.secure_url || req.file.url) : null;
 
     if (mentorType === 'Industry' && !resumeUrl) {
       return res.status(400).json({ message: 'Resume is required for Industry mentors.' });
@@ -175,17 +189,24 @@ const submitMentor = async (req, res) => {
 
     await newMentor.save();
 
-    const emailHtml = `
-      <div style="font-family: sans-serif; color: #333;">
-        <h2>Mentor Application Received!</h2>
-        <p>Hi ${fullName},</p>
-        <p>Thank you for applying as a <strong>${mentorType} Mentor</strong> for CUSoC.</p>
-        <p>We're thrilled by your interest in guiding our student developers. Our organizing team will review your profile and reach out to you shortly.</p>
-        <br/>
-        <p>Best regards,<br/><strong>CUSoC Team</strong></p>
+    const emailHtml = emailTemplate(`
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">Mentor Application Received! 🙌</h2>
+      <p style="margin:0 0 24px;font-size:14px;color:#868e96;border-bottom:1px solid #e9ecef;padding-bottom:20px;">${mentorType} Mentor Application — CUSoC 2025</p>
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Hi <strong>${fullName}</strong>,</p>
+      <p style="margin:0 0 24px;font-size:15px;color:#343a40;line-height:1.7;">Thank you for applying as a <strong style="color:#E63946;">${mentorType} Mentor</strong> for CUSoC! We're thrilled by your interest in guiding our student developers.</p>
+
+      <!-- Status badge -->
+      <div style="background:#f8f9fa;border-left:4px solid #E63946;border-radius:0 8px 8px 0;padding:16px 20px;margin:0 0 24px;">
+        <p style="margin:0;font-size:13px;font-weight:700;color:#1a1a2e;text-transform:uppercase;letter-spacing:0.5px;">Application Status</p>
+        <p style="margin:4px 0 0;font-size:15px;font-weight:600;color:#E63946;">✅ Received &amp; Under Review</p>
       </div>
-    `;
-    await sendEmail({ email, subject: 'CUSoC Mentor Application Received', html: emailHtml });
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Our organizing team will carefully review your profile and reach out to you shortly. We appreciate your commitment to open-source mentorship!</p>
+
+      <p style="margin:0;font-size:14px;color:#495057;line-height:1.7;">Best regards,<br/><strong style="color:#1a1a2e;">The CUSoC Team</strong></p>
+    `);
+    await sendEmail({ email, subject: 'CUSoC — Mentor Application Received ✅', html: emailHtml });
 
     res.status(201).json({ message: 'Mentor application submitted successfully' });
   } catch (error) {
@@ -270,17 +291,30 @@ const submitProject = async (req, res) => {
 
     await newProject.save();
 
-    const emailHtml = `
-      <div style="font-family: sans-serif; color: #333;">
-        <h2>Project Proposal Received!</h2>
-        <p>Hi ${proposerName},</p>
-        <p>Thank you for proposing the project <strong>"${projectTitle}"</strong> for CUSoC.</p>
-        <p>Our program administrators will review your proposal to ensure it aligns with our cohort goals. We will notify you once it's approved.</p>
-        <br/>
-        <p>Best regards,<br/><strong>CUSoC Team</strong></p>
+    const emailHtml = emailTemplate(`
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">Project Proposal Received! 🚀</h2>
+      <p style="margin:0 0 24px;font-size:14px;color:#868e96;border-bottom:1px solid #e9ecef;padding-bottom:20px;">Project Proposal — CUSoC 2025</p>
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Hi <strong>${proposerName}</strong>,</p>
+      <p style="margin:0 0 24px;font-size:15px;color:#343a40;line-height:1.7;">Thank you for submitting your project proposal to CUSoC! We're excited to review what you've put together.</p>
+
+      <!-- Project detail box -->
+      <div style="background:#f8f9fa;border:1px solid #e9ecef;border-radius:10px;padding:20px 24px;margin:0 0 24px;">
+        <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#868e96;text-transform:uppercase;letter-spacing:0.5px;">Project Title</p>
+        <p style="margin:0;font-size:17px;font-weight:700;color:#1a1a2e;">&ldquo;${projectTitle}&rdquo;</p>
       </div>
-    `;
-    await sendEmail({ email, subject: 'CUSoC Project Proposal Received', html: emailHtml });
+
+      <!-- Status badge -->
+      <div style="background:#f8f9fa;border-left:4px solid #E63946;border-radius:0 8px 8px 0;padding:16px 20px;margin:0 0 24px;">
+        <p style="margin:0;font-size:13px;font-weight:700;color:#1a1a2e;text-transform:uppercase;letter-spacing:0.5px;">Proposal Status</p>
+        <p style="margin:4px 0 0;font-size:15px;font-weight:600;color:#E63946;">✅ Received &amp; Pending Review</p>
+      </div>
+
+      <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Our program administrators will review your proposal to ensure it aligns with our cohort goals. We will notify you once it has been approved.</p>
+
+      <p style="margin:0;font-size:14px;color:#495057;line-height:1.7;">Best regards,<br/><strong style="color:#1a1a2e;">The CUSoC Team</strong></p>
+    `);
+    await sendEmail({ email, subject: 'CUSoC — Project Proposal Received ✅', html: emailHtml });
 
     res.status(201).json({ message: 'Project proposal submitted successfully' });
   } catch (error) {
