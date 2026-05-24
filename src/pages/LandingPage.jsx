@@ -14,13 +14,18 @@ const LandingPage = () => {
       {/* ─── Hero Section ─── */}
       <section className="relative pt-10 sm:pt-16 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-72px)] gap-10 lg:gap-0">
 
-        {/* Background Watermark Logo — contained & not overflowing on mobile */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-          <img
-            src="/CUSOC Logo.svg"
-            alt=""
-            fetchPriority="high"
-            className="w-[90%] sm:w-[70%] lg:w-full max-w-2xl lg:max-w-full h-auto object-contain opacity-[0.18] sm:opacity-[0.22] select-none blur-[1px] sm:blur-[2px]"
+        {/* Background Watermark Video — contained & not overflowing on mobile */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden mix-blend-multiply"
+          style={{ WebkitMaskImage: 'linear-gradient(to top, transparent 15%, black 25%)', maskImage: 'linear-gradient(to top, transparent 15%, black 25%)' }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            src="/CUSOC logo reveal.mp4"
+            className="w-[90%] sm:w-[70%] lg:w-full max-w-2xl lg:max-w-full h-auto object-contain opacity-[0.25] sm:opacity-[0.3] select-none blur-[1px] sm:blur-[2px] brightness-110 contrast-125"
           />
         </div>
 
@@ -115,6 +120,46 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ─── The Road to GSoC ─── */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-16 sm:scroll-mt-20">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 bg-white/60 backdrop-blur-xl border border-gray-200/60 rounded-3xl p-8 sm:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.04)] relative overflow-hidden">
+          
+          <div className="absolute top-0 right-0 w-[40%] h-[100%] bg-gradient-to-l from-yellow-500/5 to-transparent pointer-events-none" />
+          
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left relative z-10">
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-gray-100 text-gray-700 text-xs font-black uppercase tracking-widest rounded-full mb-6 border border-gray-200">
+              <img src="/GSOC Logo 1-2.png" alt="GSoC Logo" className="h-5 w-auto" />
+              <span>The Bridge to Google Summer of Code</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 tracking-tight text-gray-900 leading-[1.1]">
+              From Campus to <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600">Global Open Source</span>
+            </h2>
+            
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed font-medium mb-8">
+              CUSoC is designed to bridge the gap between academic learning and world-class open-source contribution. Our curriculum and projects are tailored to prepare you directly for the prestigious <b>Google Summer of Code (GSoC)</b>.
+            </p>
+          </div>
+
+          <div className="w-full lg:w-1/2 relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50 bg-white transform hover:scale-[1.02] transition-transform duration-500">
+            <video
+              autoPlay
+              muted
+              playsInline
+              onEnded={(e) => {
+                const video = e.target;
+                setTimeout(() => {
+                  video.play();
+                }, 1000);
+              }}
+              src="/Animated_logo_CUSoC_to_GSoC.mp4"
+              className="w-full h-auto object-cover pointer-events-none mix-blend-multiply brightness-110 contrast-125"
+            />
+          </div>
+          
         </div>
       </section>
 
