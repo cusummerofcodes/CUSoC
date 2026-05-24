@@ -54,6 +54,9 @@ const emailTemplate = (bodyContent) => `
                 style="display:block;margin:0 auto;max-width:160px;height:auto;"
                 onerror="this.style.display='none'"
               />
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">
+                Chandigarh University Season of Code
+              </div>
             </td>
           </tr>
 
