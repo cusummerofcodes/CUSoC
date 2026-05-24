@@ -21,20 +21,31 @@ const emailTemplate = (bodyContent) => `
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>CUSoC</title>
+  <style>
+    * { box-sizing: border-box; }
+    @media only screen and (max-width: 600px) {
+      .email-container { width: 100% !important; border-radius: 0 !important; }
+      .outer-wrapper { padding: 0 !important; }
+      .header-content { padding: 24px 20px !important; }
+      .body-content { padding: 24px 20px 20px !important; }
+      .divider-content { padding: 0 20px !important; }
+      .footer-content { padding: 20px !important; border-radius: 0 !important; }
+    }
+  </style>
 </head>
 <body style="margin:0;padding:0;background-color:#f1f3f5;font-family:'Segoe UI',Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;">
 
   <!-- Outer wrapper -->
-  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f1f3f5;padding:32px 16px;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" class="outer-wrapper" style="background-color:#f1f3f5;padding:32px 16px;">
     <tr>
       <td align="center">
 
         <!-- Email card -->
-        <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+        <table class="email-container" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
 
           <!-- Header / Banner -->
           <tr>
-            <td style="background:linear-gradient(135deg,${BRAND_DARK} 0%,#16213e 50%,#0f3460 100%);padding:36px 40px;text-align:center;">
+            <td class="header-content" style="background:linear-gradient(135deg,${BRAND_DARK} 0%,#16213e 50%,#0f3460 100%);padding:36px 40px;text-align:center;">
               <!-- Logo -->
               <img
                 src="https://res.cloudinary.com/docryoplj/image/upload/v1779547728/cusoc_adtqlx.png"
@@ -60,21 +71,21 @@ const emailTemplate = (bodyContent) => `
 
           <!-- Body content -->
           <tr>
-            <td style="padding:40px 40px 32px;">
+            <td class="body-content" style="padding:40px 40px 32px;">
               ${bodyContent}
             </td>
           </tr>
 
           <!-- Divider -->
           <tr>
-            <td style="padding:0 40px;">
+            <td class="divider-content" style="padding:0 40px;">
               <div style="height:1px;background:#e9ecef;"></div>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="padding:24px 40px;background:#fafafa;border-radius:0 0 16px 16px;text-align:center;">
+            <td class="footer-content" style="padding:24px 40px;background:#fafafa;border-radius:0 0 16px 16px;text-align:center;">
               <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:${BRAND_DARK};">
                 CUSoC Team
               </p>
