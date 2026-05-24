@@ -1,4 +1,4 @@
-# CUSoC — Chandigarh University Summer of Code
+# CUSoC — Chandigarh University Season of Code
 
 <p align="center">
   <img src="./public/cusoc.png" alt="CUSoC Logo" width="180" />
@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Official Registration & Cohort Management Portal</strong><br/>
-  An open-source development program by Chandigarh University, inspired by Google Summer of Code.
+  An open-source development program by Chandigarh University.
 </p>
 
 <p align="center">
@@ -40,7 +40,7 @@
 
 ## 🚀 About
 
-**CUSoC (Chandigarh University Summer of Code)** is a structured open-source development program that connects students with industry professionals and faculty mentors to work on real-world projects.
+**CUSoC (Chandigarh University Season of Code)** is a structured open-source development program that connects students with industry professionals and faculty mentors to work on real-world projects.
 
 This repository contains the full-stack web application for:
 - 📝 Student & contributor registration

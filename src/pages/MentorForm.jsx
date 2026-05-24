@@ -45,21 +45,21 @@ const MentorForm = () => {
   const labelClass = "block text-sm font-semibold text-gray-700 mb-1.5";
 
   return (
-    <div className="min-h-[calc(100vh-72px)] bg-[#FAFAFA] py-16 px-4">
+    <div className="min-h-[calc(100vh-64px)] bg-[#FAFAFA] py-10 sm:py-16 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="flex justify-center mb-6">
           <img src="/cusoc.png" alt="CUSoC Logo" className="h-14 w-auto" />
         </div>
         <div className="text-center mb-10">
           <span className="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-xs font-black uppercase tracking-widest rounded-full mb-4 border border-gray-200">MENTOR</span>
-          <h1 className="text-4xl font-black tracking-tight text-gray-900 mb-3">Mentor Application</h1>
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-gray-900 mb-3">Mentor Application</h1>
           <p className="text-gray-600 max-w-2xl mx-auto font-medium">
             Thank you for offering your expertise. Please select your mentor track and fill out the form below.
           </p>
         </div>
       
       {/* Mentor Type Selector */}
-      <div className="flex justify-center space-x-4 mb-8">
+      <div className="flex flex-wrap justify-center gap-3 mb-8">
         {['Industry', 'Faculty', 'Student'].map(type => (
           <button 
             key={type}
@@ -77,7 +77,7 @@ const MentorForm = () => {
           </div>
         )}
         
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Common Fields */}
           <h3 className="text-lg font-black text-gray-900 mb-5 pb-2 border-b border-gray-100">Personal Details</h3>

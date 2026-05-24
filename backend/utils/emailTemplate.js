@@ -48,7 +48,7 @@ const emailTemplate = (bodyContent) => `
                 CU<span style="color:${BRAND_RED};">S</span>oC
               </div>
               <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">
-                Chandigarh University Summer of Code
+                Chandigarh University Season of Code
               </div>
             </td>
           </tr>
@@ -79,7 +79,7 @@ const emailTemplate = (bodyContent) => `
                 CUSoC Team
               </p>
               <p style="margin:0 0 12px;font-size:12px;color:#868e96;line-height:1.6;">
-                Chandigarh University Summer of Code &bull; Pilot Program 2025
+                Chandigarh University Season of Code &bull; Pilot Program 2025
               </p>
               <p style="margin:0;font-size:11px;color:#adb5bd;">
                 This is an automated email. Please do not reply directly to this message.<br/>

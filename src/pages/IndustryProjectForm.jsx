@@ -143,7 +143,7 @@ const IndustryProjectForm = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-72px)] bg-[#FAFAFA] py-16 px-4">
+    <div className="min-h-[calc(100vh-64px)] bg-[#FAFAFA] py-10 sm:py-16 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-center mb-6">
           <img src="/cusoc.png" alt="CUSoC Logo" className="h-14 w-auto" />
@@ -152,7 +152,7 @@ const IndustryProjectForm = () => {
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-yellow-50 text-yellow-800 text-xs font-black uppercase tracking-widest rounded-full mb-4 border border-yellow-200">
             🏢 FOR INDUSTRY
           </span>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-3">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-3">
             <span className="text-gray-900">Industry Project </span>
             <span className="text-cusoc-red">Proposal</span>
           </h1>
@@ -166,7 +166,7 @@ const IndustryProjectForm = () => {
           <div className="mb-8 p-4 rounded-xl text-center font-semibold text-sm bg-red-50 border border-red-100 text-cusoc-red">{status}</div>
         )}
 
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 md:p-12">
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-8 md:p-12">
           <div className="mb-10 inline-flex items-center gap-2 px-4 py-1.5 border border-yellow-200 rounded-full bg-yellow-50">
             <span className="text-yellow-700 text-xs font-black tracking-widest uppercase">✨ Industry Project Proposal</span>
           </div>

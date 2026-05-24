@@ -110,7 +110,7 @@ const FacultyMentorForm = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-72px)] bg-[#FAFAFA] py-16 px-4">
+    <div className="min-h-[calc(100vh-64px)] bg-[#FAFAFA] py-10 sm:py-16 px-4">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
@@ -121,7 +121,7 @@ const FacultyMentorForm = () => {
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-cusoc-red/10 text-cusoc-red text-xs font-black uppercase tracking-widest rounded-full mb-4 border border-cusoc-red/20">
             ✨ FACULTY MENTOR APPLICATION
           </span>
-          <h1 className="text-5xl font-black tracking-tight mb-3">
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-3">
             <span className="text-gray-900">Faculty Mentor </span>
             <span className="text-cusoc-red">Application</span>
           </h1>
@@ -134,7 +134,7 @@ const FacultyMentorForm = () => {
           <div className="mb-8 p-4 rounded-xl text-center font-semibold text-sm bg-red-50 border border-red-100 text-cusoc-red">{status}</div>
         )}
 
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 md:p-10">
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-8 md:p-10">
           <form onSubmit={handleSubmit} className="space-y-10">
 
             {/* Basic Information */}

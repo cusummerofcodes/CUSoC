@@ -1,5 +1,5 @@
 # Product Requirements Document (PRD)
-## CUSoC — Chandigarh University Summer of Code
+## CUSoC — Chandigarh University Season of Code
 ### Registration & Cohort Management Website
 
 ---
@@ -14,10 +14,10 @@
 ## 1. Overview
 
 ### 1.1 Purpose
-This document defines the product requirements for the CUSoC (Chandigarh University Summer of Code) registration and cohort management website. The platform will serve as the official digital gateway for students and industry professionals to apply for the program as contributors, mentors, or project proposers — and for admins to manage and review those submissions.
+This document defines the product requirements for the CUSoC (Chandigarh University Season of Code) registration and cohort management website. The platform will serve as the official digital gateway for students and industry professionals to apply for the program as contributors, mentors, or project proposers — and for admins to manage and review those submissions.
 
 ### 1.2 Background
-CUSoC is an open-source development program run by Chandigarh University, modeled after Google Summer of Code. The program runs in two phases:
+CUSoC is an open-source development program run by Chandigarh University. The program runs in two phases:
 - **Pilot Summer Program:** 15 May 2026 – 15 July 2026 — Identification and training of high-potential contributors
 - **Final Showcase & Evaluation Day:** 21 July 2026 — Final assessment and project showcase
 - **CUSoC Cohort Program:** 25 July 2026 – April 2027 — Long-term mentorship and production-scale engineering training

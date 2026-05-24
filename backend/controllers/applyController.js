@@ -115,7 +115,7 @@ const submitContributor = async (req, res) => {
       <p style="margin:0 0 24px;font-size:14px;color:#868e96;border-bottom:1px solid #e9ecef;padding-bottom:20px;">Contributor Application — CUSoC 2025</p>
 
       <p style="margin:0 0 16px;font-size:15px;color:#343a40;line-height:1.7;">Hi <strong>${fullName}</strong>,</p>
-      <p style="margin:0 0 24px;font-size:15px;color:#343a40;line-height:1.7;">Thank you for applying to be a <strong style="color:#E63946;">Contributor</strong> for the Chandigarh University Summer of Code (CUSoC) pilot program. We're excited to have you on board!</p>
+      <p style="margin:0 0 24px;font-size:15px;color:#343a40;line-height:1.7;">Thank you for applying to be a <strong style="color:#E63946;">Contributor</strong> for the Chandigarh University Season of Code (CUSoC) pilot program. We're excited to have you on board!</p>
 
       <!-- Status badge -->
       <div style="background:#f8f9fa;border-left:4px solid #E63946;border-radius:0 8px 8px 0;padding:16px 20px;margin:0 0 24px;">
