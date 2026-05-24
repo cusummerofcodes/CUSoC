@@ -27,7 +27,7 @@ const LandingPage = ({ onVideoLoaded }) => {
             }}
             src="/cusoc-logo-reveal.mp4"
             className="w-[90%] sm:w-[70%] lg:w-full max-w-2xl lg:max-w-full h-auto object-contain opacity-[0.25] sm:opacity-[0.3] select-none blur-[1px] sm:blur-[2px] brightness-110 contrast-125"
-            style={{ WebkitMaskImage: 'radial-gradient(50% 50% at 50% 50%, black 40%, transparent 85%)', maskImage: 'radial-gradient(50% 50% at 50% 50%, black 40%, transparent 85%)' }}
+            style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent 5%, black 25%, black 75%, transparent 95%)', maskImage: 'linear-gradient(to bottom, transparent 5%, black 25%, black 75%, transparent 95%)' }}
           />
         </div>
 
