@@ -1,7 +1,7 @@
 # CUSoC — Chandigarh University Season of Code
 
 <p align="center">
-  <img src="./public/cusoc.png" alt="CUSoC Logo" width="180" />
+  <img src="./public/CUSOC%20Logo.svg" alt="CUSoC Logo" width="180" />
 </p>
 
 <p align="center">
