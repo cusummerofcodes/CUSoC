@@ -45,22 +45,15 @@ const emailTemplate = (bodyContent) => `
 
           <!-- Header / Banner -->
           <tr>
-            <td class="header-content" style="background:linear-gradient(135deg,${BRAND_DARK} 0%,#16213e 50%,#0f3460 100%);padding:36px 40px;text-align:center;">
+            <td class="header-content" style="background:linear-gradient(135deg,${BRAND_DARK} 0%,#16213e 50%,#0f3460 100%);padding:24px 40px;text-align:center;">
               <!-- Logo -->
               <img
                 src="https://res.cloudinary.com/docryoplj/image/upload/v1779547728/cusoc_adtqlx.png"
                 alt="CUSoC Logo"
-                width="120"
-                style="display:block;margin:0 auto 16px;max-width:120px;height:auto;"
+                width="160"
+                style="display:block;margin:0 auto;max-width:160px;height:auto;"
                 onerror="this.style.display='none'"
               />
-              <!-- Fallback text logo if image fails -->
-              <div style="font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;line-height:1.2;">
-                CU<span style="color:${BRAND_RED};">S</span>oC
-              </div>
-              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">
-                Chandigarh University Season of Code
-              </div>
             </td>
           </tr>
 
