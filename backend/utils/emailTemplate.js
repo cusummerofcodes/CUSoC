@@ -94,8 +94,7 @@ const emailTemplate = (bodyContent) => `
               </p>
               <p style="margin:0;font-size:11px;color:#adb5bd;">
                 This is an automated email. Please do not reply directly to this message.<br/>
-                For queries, contact us at
-                <a href="mailto:cu.summerofcodes@gmail.com" style="color:${BRAND_RED};text-decoration:none;font-weight:600;">cu.summerofcodes@gmail.com</a>
+                For queries, please reach out to the organizing team.
               </p>
             </td>
           </tr>
