@@ -17,7 +17,7 @@ const LandingPage = () => {
         {/* Background Watermark Logo — contained & not overflowing on mobile */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           <img
-            src="/cusoc.png"
+            src="/CUSOC Logo.svg"
             alt=""
             fetchPriority="high"
             className="w-[90%] sm:w-[70%] lg:w-full max-w-2xl lg:max-w-full h-auto object-contain opacity-[0.18] sm:opacity-[0.22] select-none blur-[1px] sm:blur-[2px]"

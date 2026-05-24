@@ -19,7 +19,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
-              <img className="h-10 sm:h-14 w-auto" src="/cusoc.png" alt="CUSoC Logo" fetchPriority="high" />
+              <img className="h-10 sm:h-14 w-auto" src="/CUSOC Logo.svg" alt="CUSoC Logo" fetchPriority="high" />
             </Link>
           </div>
 

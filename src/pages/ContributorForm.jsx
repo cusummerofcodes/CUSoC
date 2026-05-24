@@ -138,7 +138,7 @@ const ContributorForm = () => {
 
         {/* Header */}
         <div className="flex justify-center mb-6">
-          <img src="/cusoc.png" alt="CUSoC Logo" className="h-14 w-auto" />
+          <img src="/CUSOC Logo.svg" alt="CUSoC Logo" className="h-14 w-auto" />
         </div>
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-cusoc-red/10 text-cusoc-red text-xs font-black uppercase tracking-widest rounded-full mb-4 border border-cusoc-red/20">

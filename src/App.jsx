@@ -54,7 +54,7 @@ function App() {
           
           {/* Center logo/dot */}
           <div className="w-16 h-16 bg-white rounded-full z-10 flex items-center justify-center shadow-[0_0_20px_rgba(220,38,38,0.4)]">
-            <img src="/cusoc.png" alt="CUSoC Logo" className="w-10 h-auto" />
+            <img src="/CUSOC Logo.svg" alt="CUSoC Logo" className="w-10 h-auto" />
           </div>
         </div>
         <h2 className="mt-8 text-xl font-semibold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600 animate-pulse">

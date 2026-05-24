@@ -40,7 +40,7 @@ const AdminLogin = () => {
     <div className="flex items-center justify-center min-h-[calc(100vh-72px)] bg-[#FAFAFA] px-4 py-12">
       <div className="w-full max-w-md bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl p-8 md:p-10">
         <div className="flex justify-center mb-8">
-          <img src="/cusoc.png" alt="CUSoC Logo" className="h-14 w-auto" />
+          <img src="/CUSOC Logo.svg" alt="CUSoC Logo" className="h-14 w-auto" />
         </div>
         
         <div className="text-center mb-8">

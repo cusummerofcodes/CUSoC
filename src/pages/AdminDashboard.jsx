@@ -156,7 +156,7 @@ const AdminDashboard = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
           <div className="flex items-center gap-3 sm:gap-4">
-            <img src="/cusoc.png" alt="CUSoC Logo" className="h-9 sm:h-10 w-auto" />
+            <img src="/CUSOC Logo.svg" alt="CUSoC Logo" className="h-9 sm:h-10 w-auto" />
             <div>
               <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">Admin Dashboard</h1>
               <p className="text-xs sm:text-sm font-medium text-gray-500 mt-0.5">Manage all program applications</p>

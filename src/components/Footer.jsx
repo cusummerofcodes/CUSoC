@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
           {/* Brand — full width on small, spans 2 cols on sm */}
           <div className="col-span-2">
-            <img src="/cusoc.png" alt="CUSoC Logo" className="h-10 sm:h-12 w-auto mb-3 sm:mb-4" />
+            <img src="/CUSOC Logo.svg" alt="CUSoC Logo" className="h-10 sm:h-12 w-auto mb-3 sm:mb-4" />
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-medium">
               Chandigarh University Season of Code — A student-driven open-source program building the next generation of developers through real-world projects and mentorship.
             </p>

@@ -146,7 +146,7 @@ const IndustryProjectForm = () => {
     <div className="min-h-[calc(100vh-64px)] bg-[#FAFAFA] py-10 sm:py-16 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-center mb-6">
-          <img src="/cusoc.png" alt="CUSoC Logo" className="h-14 w-auto" />
+          <img src="/CUSOC Logo.svg" alt="CUSoC Logo" className="h-14 w-auto" />
         </div>
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-yellow-50 text-yellow-800 text-xs font-black uppercase tracking-widest rounded-full mb-4 border border-yellow-200">
