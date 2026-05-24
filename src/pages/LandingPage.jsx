@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const LandingPage = () => {
+const LandingPage = ({ onVideoLoaded }) => {
   return (
     <div className="bg-[#FAFAFA] text-gray-900 min-h-screen relative font-space-grotesk">
 
@@ -22,6 +22,9 @@ const LandingPage = () => {
             muted={true}
             playsInline={true}
             preload="auto"
+            onLoadedData={() => {
+              if (onVideoLoaded) onVideoLoaded();
+            }}
             src="/cusoc-logo-reveal.mp4"
             className="w-[90%] sm:w-[70%] lg:w-full max-w-2xl lg:max-w-full h-auto object-contain opacity-[0.25] sm:opacity-[0.3] select-none blur-[1px] sm:blur-[2px] brightness-110 contrast-125"
             style={{ WebkitMaskImage: 'radial-gradient(ellipse at center, black 50%, transparent 90%)', maskImage: 'radial-gradient(ellipse at center, black 50%, transparent 90%)' }}

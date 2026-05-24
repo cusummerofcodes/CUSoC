@@ -24,13 +24,17 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
-  const [loading, setLoading] = useState(true);
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  
+  const [appLoaded, setAppLoaded] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const handleLoad = () => {
       // Add a tiny delay for smoothness
-      setTimeout(() => setLoading(false), 500);
+      setTimeout(() => setAppLoaded(true), 500);
     };
 
     if (document.readyState === 'complete') {
@@ -41,9 +45,11 @@ function App() {
     }
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+  const showLoading = isHome ? !(appLoaded && videoLoaded) : !appLoaded;
+
+  return (
+    <>
+      <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gray-50 transition-opacity duration-1000 ${showLoading ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="relative flex items-center justify-center">
           {/* Glowing pulse rings */}
           <div className="absolute w-32 h-32 border-4 border-red-600 rounded-full animate-ping opacity-20"></div>
@@ -61,17 +67,12 @@ function App() {
           INITIALIZING
         </h2>
       </div>
-    );
-  }
 
-  return (
-    <Router>
-      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage onVideoLoaded={() => setVideoLoaded(true)} />} />
             <Route path="/register/contributor" element={<ContributorForm />} />
             <Route path="/register/mentor" element={<MentorPortal />} />
             <Route path="/register/project" element={<ProjectPortal />} />
@@ -86,6 +87,15 @@ function App() {
         </main>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
     </Router>
   );
 }
