@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
-    <div className="bg-[#FAFAFA] text-gray-900 min-h-screen relative overflow-x-hidden font-space-grotesk">
+    <div className="bg-[#FAFAFA] text-gray-900 min-h-screen relative font-space-grotesk">
 
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:64px_64px] -z-20 pointer-events-none" />

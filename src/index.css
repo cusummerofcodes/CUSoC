@@ -9,6 +9,13 @@
   --font-space-grotesk: "Space Grotesk", sans-serif;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--color-cusoc-bg);
   color: var(--color-cusoc-text);
