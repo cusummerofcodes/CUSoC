@@ -86,7 +86,7 @@ const emailTemplate = (bodyContent) => `
                 CUSoC Team
               </p>
               <p style="margin:0 0 12px;font-size:12px;color:#868e96;line-height:1.6;">
-                Chandigarh University Season of Code &bull; Pilot Program 2025
+                Chandigarh University Season of Code &bull; Pilot Program 2026
               </p>
               <p style="margin:0;font-size:11px;color:#adb5bd;">
                 This is an automated email. Please do not reply directly to this message.<br/>
