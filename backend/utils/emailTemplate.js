@@ -41,7 +41,7 @@ const emailTemplate = (bodyContent) => `
       <td align="center">
 
         <!-- Email card -->
-        <table class="email-container" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+        <table class="email-container" width="800" cellpadding="0" cellspacing="0" border="0" style="max-width:800px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
 
           <!-- Header / Banner -->
           <tr>
