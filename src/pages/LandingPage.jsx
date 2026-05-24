@@ -15,17 +15,16 @@ const LandingPage = () => {
       <section className="relative pt-10 sm:pt-16 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-72px)] gap-10 lg:gap-0">
 
         {/* Background Watermark Video — contained & not overflowing on mobile */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden mix-blend-multiply"
-          style={{ WebkitMaskImage: 'linear-gradient(to top, transparent 15%, black 25%)', maskImage: 'linear-gradient(to top, transparent 15%, black 25%)' }}
-        >
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden mix-blend-multiply">
           <video
             autoPlay
             loop
             muted
             playsInline
-            src="/CUSOC logo reveal.mp4"
+            preload="auto"
+            src="/cusoc-logo-reveal.mp4"
             className="w-[90%] sm:w-[70%] lg:w-full max-w-2xl lg:max-w-full h-auto object-contain opacity-[0.25] sm:opacity-[0.3] select-none blur-[1px] sm:blur-[2px] brightness-110 contrast-125"
+            style={{ WebkitMaskImage: 'radial-gradient(ellipse at center, black 50%, transparent 90%)', maskImage: 'radial-gradient(ellipse at center, black 50%, transparent 90%)' }}
           />
         </div>
 
@@ -131,7 +130,7 @@ const LandingPage = () => {
           
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left relative z-10">
             <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-gray-100 text-gray-700 text-xs font-black uppercase tracking-widest rounded-full mb-6 border border-gray-200">
-              <img src="/GSOC Logo 1-2.png" alt="GSoC Logo" className="h-5 w-auto" />
+              <img src="/gsoc-logo.png" alt="GSoC Logo" className="h-5 w-auto" />
               <span>The Bridge to Google Summer of Code</span>
             </div>
             
@@ -149,13 +148,14 @@ const LandingPage = () => {
               autoPlay
               muted
               playsInline
+              preload="auto"
               onEnded={(e) => {
                 const video = e.target;
                 setTimeout(() => {
                   video.play();
                 }, 1000);
               }}
-              src="/Animated_logo_CUSoC_to_GSoC.mp4"
+              src="/animated-logo-cusoc-to-gsoc.mp4"
               className="w-full h-auto object-cover pointer-events-none mix-blend-multiply brightness-110 contrast-125"
             />
           </div>
