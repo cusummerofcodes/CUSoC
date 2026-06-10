@@ -54,8 +54,7 @@ This repository contains the full-stack web application for:
 ## 📅 Program Timeline
 
 | Phase | Dates |
-|-------|-------|
-| 🌱 Pilot Summer Program | 15 May 2026 – 15 July 2026 |
+|-------|-------||
 | 🏆 Final Showcase & Evaluation | 21 July 2026 |
 | 🎓 CUSoC Cohort Program | 25 July 2026 – April 2027 |
 
